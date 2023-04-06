@@ -30,6 +30,21 @@
 			</div>
 
 		</section><!-- #page-title end -->
+		<div class="col-lg-12" style="padding: 5% 15px 2% 15px;" >
+			<div class="row" >
+				<div class="col-md-5">
+					<label for="" class="center" style="display: flex; justify-content: space-around;">Inicio <span>Fin</span></label>
+					<div class="input-daterange component-datepicker input-group " id="date">
+					<input type="text" value="" class="form-control text-start" id="fecha-inicio-input" placeholder="DD/MM/AAAA">
+					<div class="input-group-text">a</div>
+					<input type="text" value="" class="form-control text-start" id="fecha-fin-input" placeholder="DD/MM/AAAA">
+					</div>
+				</div>
+				<div class="col-md-2" style="display: flex; justify-content: center; align-items: center;">
+						<button id="filtro" class="button button-large button-circle button-blue"><i class="icon-filter"></i>Filtrar <i class="icon-table1"></i></button>
+				</div>
+			</div>
+		</div>
 
 		<div class="tabs tabs-responsive clearfix" id="tablist">
 			<ul class="tab-nav center nav nav-pills nav-justified">
@@ -126,12 +141,25 @@
 	<!-- Bootstrap Data Table Plugin -->
 	<script src="js/components/bs-datatable.js"></script>
 
+
 	<!-- Bootstrap Select Plugin -->
 	<script src="js/components/bs-select.js"></script>
 
 	<!-- Select Splitter Plugin -->
-	<script src="js/components/selectsplitter.js"></script> 
+	<script src="js/components/selectsplitter.js"></script>
 
+	<!-- Bootstrap Data Table Plugin -->
+	<script src="js/components/bs-datatable.js"></script>
+	
+	
+	<!-- Date & Time Picker JS -->
+	<script src="js/components/moment.js"></script>
+	<script src="js/components/timepicker.js"></script>
+	<script src="js/components/datepicker.js"></script>
+
+	<!-- Include Date Range Picker -->
+	<script src="js/components/daterangepicker.js"></script>
+	
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="js/functions.js"></script>
@@ -160,6 +188,13 @@
 			}
 		});
 
+	});
+	$(function() {
+			// Inicializar los datepickers
+			$('.component-datepicker.input-daterange').datepicker({
+                autoclose: true,
+                format: "yyyy-mm-dd",
+            });
 	});
 
 	</script>

@@ -30,14 +30,22 @@
 			</div>
 		</section><!-- #page-title end -->
 
-		<div class="" style="position:inherit;">
-			<ul class="one-page-menu menu-container" data-easing="easeInOutExpo" data-speed="1250" data-offset="65">
-				<input type="text" class="form-control daterange1" id="fecha_filtro" style="width: 22%; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; padding: 12px 6px;" value="" />
-				<a href="#" class="button button-reveal button-large text-right m-0" style="padding-top: 5px; padding-bottom: 5px; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; border-radius: 0 5px 5px 0;" id="buscar"><i class="icon-angle-right"></i><span>Search</span></a>
-			</ul>
+		<div class="col-lg-12" style="padding: 5% 15px 2% 15px;" >
+			<div class="row" >
+				<div class="col-md-5">
+					<label for="" class="center" style="display: flex; justify-content: space-around;">Inicio <span>Fin</span></label>
+					<div class="input-daterange component-datepicker input-group " id="date">
+					<input type="text" value="" class="form-control text-start" id="fecha-inicio-input" placeholder="DD/MM/AAAA">
+					<div class="input-group-text">a</div>
+					<input type="text" value="" class="form-control text-start" id="fecha-fin-input" placeholder="DD/MM/AAAA">
+					</div>
+				</div>
+				<div class="col-md-2" style="display: flex; justify-content: center; align-items: center;">
+						<button id="filtro" class="button button-large button-circle button-blue"><i class="icon-filter"></i>Filtrar <i class="icon-table1"></i></button>
+				</div>
+			</div>
 		</div>
 
-		<br>
 
 		<div class="tabs tabs-responsive clearfix" id="tablist">
 			<ul class="tab-nav center nav nav-pills nav-justified">
@@ -137,12 +145,12 @@
 	<script src="js/components/bs-select.js"></script>
 
 	<!-- Select Splitter Plugin -->
-	<script src="js/components/selectsplitter.js"></script> 
+	<script src="js/components/selectsplitter.js"></script>
 
-	<!-- Footer Scripts
-	============================================= -->
-	<script src="js/functions.js"></script>
-
+	<!-- Bootstrap Data Table Plugin -->
+	<script src="js/components/bs-datatable.js"></script>
+	
+	
 	<!-- Date & Time Picker JS -->
 	<script src="js/components/moment.js"></script>
 	<script src="js/components/timepicker.js"></script>
@@ -150,7 +158,10 @@
 
 	<!-- Include Date Range Picker -->
 	<script src="js/components/daterangepicker.js"></script>
-
+	
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
 	<script>
 
 	$(document).ready(function() {
@@ -179,145 +190,11 @@
 	});
 
 	$(function() {
-		$('.component-datepicker.default').datepicker({
-			autoclose: true,
-			startDate: "today",
-		});
-
-		$('.component-datepicker.today').datepicker({
-			autoclose: true,
-			startDate: "today",
-			todayHighlight: true
-		});
-
-		$('.component-datepicker.past-enabled').datepicker({
-			autoclose: true,
-		});
-
-		$('.component-datepicker.format').datepicker({
-			autoclose: true,
-			format: "dd-mm-yyyy",
-		});
-
-		$('.component-datepicker.autoclose').datepicker();
-
-		$('.component-datepicker.disabled-week').datepicker({
-			autoclose: true,
-			daysOfWeekDisabled: "0"
-		});
-
-		$('.component-datepicker.highlighted-week').datepicker({
-			autoclose: true,
-			daysOfWeekHighlighted: "0"
-		});
-
-		$('.component-datepicker.mnth').datepicker({
-			autoclose: true,
-			minViewMode: 1,
-			format: "mm/yy"
-		});
-
-		$('.component-datepicker.multidate').datepicker({
-			multidate: true,
-			multidateSeparator: " , "
-		});
-
-		$('.component-datepicker.input-daterange').datepicker({
-			autoclose: true
-		});
-
-		$('.component-datepicker.inline-calendar').datepicker();
-
-		$('.datetimepicker').datetimepicker({
-			showClose: true
-		});
-
-		$('.datetimepicker1').datetimepicker({
-			format: 'LT',
-			showClose: true
-		});
-
-		$('.datetimepicker2').datetimepicker({
-			inline: true,
-			sideBySide: true
-		});
-
-		$('.datetimepicker3,.datetimepicker4').datetimepicker();
-
-		// .daterange1
-		$(".daterange1").daterangepicker({
-			"buttonClasses": "button button-rounded button-mini m-0",
-			"applyClass": "button-color",
-			"cancelClass": "button-light",
-			timePicker: true,
-			timePicker24Hour: true,
-                        timePickerSeconds: true,
-                        locale: { format: 'YYYY-MM-DD HH:mm:ss'
-			}
-		});
-
-		// .daterange2
-		$(".daterange2").daterangepicker({
-			"opens": "center",
-			timePicker: true,
-			timePickerIncrement: 30,
-			locale: {
-				format: 'DD/MMMM/YYYY h:mm A'
-			},
-			"buttonClasses": "button button-rounded button-mini m-0",
-			"applyClass": "button-color",
-			"cancelClass": "button-light"
-		});
-
-		// .daterange3
-		$(".daterange3").daterangepicker({
-			singleDatePicker: true,
-			showDropdowns: true
-		},
-		function(start, end, label) {
-			var years = moment().diff(start, 'years');
-			alert("You are " + years + " years old.");
-		});
-
-		// reportrange
-		function cb(start, end) {
-			$(".reportrange span").html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-		}
-		cb(moment().subtract(29, 'days'), moment());
-
-		$(".reportrange").daterangepicker({
-			"buttonClasses": "button button-rounded button-mini m-0",
-			"applyClass": "button-color",
-			"cancelClass": "button-light",
-			ranges: {
-			   'Today': [moment(), moment()],
-			   'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-			   'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-			   'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-			   'This Month': [moment().startOf('month'), moment().endOf('month')],
-			   'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-			}
-		}, cb);
-
-		// .daterange4
-		$(".daterange4").daterangepicker({
-			autoUpdateInput: false,
-			locale: {
-				cancelLabel: 'Clear'
-			},
-			"buttonClasses": "button button-rounded button-mini m-0",
-			"applyClass": "button-color",
-			"cancelClass": "button-light"
-		});
-
-		$(".daterange4").on('apply.daterangepicker', function(ev, picker) {
-			$(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-		});
-
-		$(".daterange4").on('cancel.daterangepicker', function(ev, picker) {
-			$(this).val('');
-		});
-
+			// Inicializar los datepickers
+			$('.component-datepicker.input-daterange').datepicker({
+                autoclose: true,
+                format: "yyyy-mm-dd",
+            });
 	});
 	</script>
 </body>

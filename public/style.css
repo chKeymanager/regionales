@@ -6450,7 +6450,7 @@ body:not(.has-plugin-html5video) .video-wrap video {
 
 #page-title {
 	/* position: relative; */
-	padding: 4rem 0;
+	padding: 5% 0% 5% 0%;
 	/* background-color: #F5F5F5;
 	border-bottom: 1px solid #EEE; */
 }
