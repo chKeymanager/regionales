@@ -2,12 +2,12 @@ const conexion = require('../database/db')
 
 const mysqlleii = (req,res) => {
 
-conexion.query("SELECT * FROM rep_fact WHERE clave_del_producto = 'INSLEI001' AND fecha_factura > '2023-01-01 00:00:00'", (error, results, fields) => {
+conexion.query("SELECT DISTINCT(numero_asociado),ramo_industrial,clave_del_producto, estado, fecha_factura, fecha_anualidad FROM rep_fact WHERE clave_del_producto = 'INSLEI001' AND fecha_factura > '2023-01-01 00:00:00'", (error, results, fields) => {
     if (error) {
       console.error('Error executing query: ' + error.stack);
       return;
     }
-    console.log('Query results:', results);
+    // console.log('Query results:', results);
     const ds = []
     for (const i in results){
       ds.push([
@@ -15,7 +15,8 @@ conexion.query("SELECT * FROM rep_fact WHERE clave_del_producto = 'INSLEI001' AN
         results[i].ramo_industrial,
         results[i].clave_del_producto,
         results[i].estado,
-        results[i].fecha_factura
+        results[i].fecha_factura,
+        results[i].fecha_anualidad
       ])
     }
     res.send(ds)
@@ -27,12 +28,12 @@ conexion.query("SELECT * FROM rep_fact WHERE clave_del_producto = 'INSLEI001' AN
 
 const mysqlleir = (req,res) => {
 
-  conexion.query("SELECT * FROM rep_fact WHERE estado = 'Pagado' AND (clave_del_producto = 'CLEI02023') AND fecha_factura > '2023-01-01 00:00:00'", (error, results, fields) => {
+  conexion.query("SELECT DISTINCT(numero_asociado),ramo_industrial,clave_del_producto, estado, fecha_factura, fecha_anualidad FROM rep_fact WHERE estado = 'Pagado' AND (clave_del_producto = 'CLEI02023') AND fecha_factura > '2023-01-01 00:00:00'", (error, results, fields) => {
       if (error) {
         console.error('Error executing query: ' + error.stack);
         return;
       }
-      console.log('Query results:', results);
+      // console.log('Query results:', results);
       const ds = []
       for (const i in results){
         ds.push([
@@ -40,7 +41,8 @@ const mysqlleir = (req,res) => {
           results[i].ramo_industrial,
           results[i].clave_del_producto,
           results[i].estado,
-          results[i].fecha_factura
+          results[i].fecha_factura,
+          results[i].fecha_anualidad
         ])
       }
       res.send(ds)

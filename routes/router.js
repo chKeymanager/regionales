@@ -3,6 +3,7 @@ const router = express.Router();
 const mysql = require('../controllers/auth')
 const mysqlq = require('../controllers/authce')
 const mysqll = require('../controllers/authlei')
+const elk = require('../controllers/elastic')
 
 router.get('/', (req,res)=>{
     res.render('pages/');
@@ -42,5 +43,9 @@ router.get('/tablaLei', (req,res)=>{
 
 router.get('/dataleiI', mysqll.mysqlleii)
 router.get('/dataleiR', mysqll.mysqlleir)
+
+router.post('/filter', mysql.filtro)
+
+router.post('/data', elk.elastic)
 
 module.exports = router;

@@ -30,21 +30,23 @@
 			</div>
 		</section><!-- #page-title end -->
 
-		<div class="col-lg-12" style="padding: 5% 15px 2% 15px;" >
-			<div class="row" >
-				<div class="col-md-5">
-					<label for="" class="center" style="display: flex; justify-content: space-around;">Inicio <span>Fin</span></label>
-					<div class="input-daterange component-datepicker input-group " id="date">
-					<input type="text" value="" class="form-control text-start" id="fecha-inicio-input" placeholder="DD/MM/AAAA">
-					<div class="input-group-text">a</div>
-					<input type="text" value="" class="form-control text-start" id="fecha-fin-input" placeholder="DD/MM/AAAA">
+		<form  action="/tabla">
+			<div class="col-lg-12" style="padding: 5% 15px 2% 15px;" >
+				<div class="row" >
+					<div class="col-md-5">
+							<label for="" class="center" style="display: flex; justify-content: space-around;">Inicio <span>Fin</span></label>
+							<div class="input-daterange component-datepicker input-group " id="date">
+							<input type="date" value="" class="form-control text-start" name="start-date" id="start-date" placeholder="DD/MM/AAAA">
+							<div class="input-group-text">a</div>
+							<input type="date" value="" class="form-control text-start" name="end-date" id="start-date" placeholder="DD/MM/AAAA">	
 					</div>
 				</div>
 				<div class="col-md-2" style="display: flex; justify-content: center; align-items: center;">
-						<button id="filtro" class="button button-large button-circle button-blue"><i class="icon-filter"></i>Filtrar <i class="icon-table1"></i></button>
+					<button type="submit" class="button button-large button-circle button-blue"><i class="icon-filter"></i>Filtrar <i class="icon-table1"></i></button>
 				</div>
 			</div>
-		</div>
+		</form>
+	</div>
 
 
 		<div class="tabs tabs-responsive clearfix" id="tablist">
@@ -68,6 +70,7 @@
 											<th>clave del producto</th>
 											<th>estado</th>
 											<th>fecha de la factura</th>
+											<th>fecha de la Anualidad</th>
 										</tr>
 									</thead>
 								</table>
@@ -89,6 +92,7 @@
 											<th>clave del producto</th>
 											<th>estado</th>
 											<th>fecha de la factura</th>
+											<th>fecha de la Anualidad</th>
 										</tr>
 									</thead>
 								</table>
@@ -110,6 +114,7 @@
 											<th>clave del producto</th>
 											<th>estado</th>
 											<th>fecha de la factura</th>
+											<th>fecha de la Anualidad</th>
 										</tr>
 									</thead>
 								</table>
